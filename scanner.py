@@ -20,17 +20,21 @@ class Scanner():
 
 
     def check_hash_in_DB(self,md5hash):
+        is_virus = False
+        err_msg = ""
         conn = sqlite3.connect(self.DB)
         cursor = conn.cursor()
         cursor.execute("SELECT 1 FROM avhash WHERE hash == (?)",(md5hash,))
         result = cursor.fetchone()
 
         if result:
-            print (True,"Malware found")
+           is_virus = True
+           err_msg = "Malware Detected"
         else:
-            print (False,"Malware not found")
+            err_msg = "Malware not detcetd"
         cursor.close()
         conn.close()
+        return is_virus,err_msg
     
 
 

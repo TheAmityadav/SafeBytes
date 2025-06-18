@@ -7,6 +7,8 @@ def fetch_hash_from_virush_share():
     conn = sqlite3.connect(DB)
     cursor = conn.cursor()
     url_count = 0
+    status = True
+    err_msg = ""
     while True:
         url = (f"https://hashes.virusshare.net/VirusShare_{url_count:05}.md5")
         try: 
@@ -23,10 +25,15 @@ def fetch_hash_from_virush_share():
             conn.commit()
             url_count+=1
         except Exception as e:
-            print(f"Error feting the hashes",{e})
+            err_msg = "Error feting the hashes..!",{e}
+            status = False
             break
     cursor.close()
     conn.close()
+    if status:
+        err_msg = "Hashes fetched succefully.."
+        
+    return status,err_msg
 
 
 

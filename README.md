@@ -29,17 +29,14 @@ SafeBytes - A hash-based antivirus scanner using Python and SQLite
 ---
 
 ## 📁 Project Structure
-│
-├── scanner.py # Main scanning logic
-├── fetch_hash.py # Downloads and updates malware hash DB
-├── hash.db # SQLite database with known malware hashes
-├── README.md
-├── .gitignore
-└── test_files/
-└── eicar.txt # Safe malware test file.
-
-
+fetch_hash.py - Have the code of fetching
+scanner.py - have the code of scanning
+main.py - Main code for temrinal CLI
 ---
+
+NOTE:
+Please use option 1 foe first time setup
+
 
 
 
